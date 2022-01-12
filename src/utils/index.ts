@@ -33,13 +33,14 @@ export const sortAndFilterTransactionData = (
   sortingMethod: string
 ) => {
   let sortedAndFiltered = data;
+  const lowerCaseKeyword = keyword.toLowerCase();
   if (keyword) {
     sortedAndFiltered = data.filter(
       d =>
-        d.beneficiary_name.includes(keyword) ||
-        d.sender_bank.includes(keyword) ||
-        d.beneficiary_bank.includes(keyword) ||
-        d.amount.toString().includes(keyword)
+        d.beneficiary_name.toLowerCase().includes(lowerCaseKeyword) ||
+        d.sender_bank.toLowerCase().includes(lowerCaseKeyword) ||
+        d.beneficiary_bank.toLowerCase().includes(lowerCaseKeyword) ||
+        d.amount.toString().includes(lowerCaseKeyword)
     );
   }
 
